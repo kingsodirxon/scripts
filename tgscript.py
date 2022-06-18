@@ -1,3 +1,4 @@
+# -*- coding: utf-8
 #██╗░░████████╗░██████╗░░██████╗░█████╗░██████╗░██╗██████╗░████████╗░░░██████╗░██╗░░░██╗
 #╚██╗░╚══██╔══╝██╔════╝░██╔════╝██╔══██╗██╔══██╗██║██╔══██╗╚══██╔══╝░░░██╔══██╗╚██╗░██╔╝
 #░╚██╗░░░██║░░░██║░░██╗░╚█████╗░██║░░╚═╝██████╔╝██║██████╔╝░░░██║░░░░░░██████╔╝░╚████╔╝░
@@ -15,6 +16,7 @@ import textwrap
 import os
 import colorama
 from colorama import Fore, Back, Style
+import json, pickle
 
 app = Client('admin', api_id=15897262, api_hash='90476d9c65a86b03837e1e249314cd75')
 
@@ -45,42 +47,222 @@ else:
 print(Fore.BLUE + Style.BRIGHT +'''
 ▀█▀ █▀▀ █▀ █▀▀ █▀█ █ █▀█ ▀█▀   █▀█ █▄█
 ░█░ █▄█ ▄█ █▄▄ █▀▄ █ █▀▀ ░█░ ▄ █▀▀ ░█░''')
-print(Fore.RED + Style.BRIGHT +'''				v.1.2.8
+print(Fore.RED + Style.BRIGHT +'''				v.1.3.0
 ''')
 
 print(Fore.GREEN + Style.BRIGHT + ">>> Информация: ")
 print(Fore.YELLOW + Style.BRIGHT +"Напишите в любой телеграм чат команду -help, \nдля просмотра всех команд!")
-print("\nАвтор скрипта -\nTelegram: @no_gold\nInstagram: @im_l.e.g.e.n.d\nВ других соц.сетях нас нет!\n")
+print("\nАвтор скрипта -\nTelegram: @no_gold\nIG: @im_l.e.g.e.n.d\nВ других соц.сетях нас нет!\n")
 
 print(Fore.GREEN + Style.BRIGHT + ">> Скорость: ")
-cool = int(input(Fore.WHITE + Style.RESET_ALL + "<*> Введите скорость от 3 до 10 (Норма 8): "))
+
+while True:
+		try:
+			cool = int(input(f" {Fore.WHITE + Style.RESET_ALL} <*> Введите скорость от 3 до 10 (Норма 8): {Fore.LIGHTBLACK_EX}"))
+			if cool > 10:
+				print(Fore.RED + Style.BRIGHT + "\n[!] Слишком медленно!")
+			else:
+				if cool < 3:
+					print(Fore.RED + Style.BRIGHT +"\n[!] Слишком быстро!")
+				else:
+					if cool == str():
+						print(Fore.RED + Style.BRIGHT +"\n[!] Вы не ввели скорость!")
+					else:
+						print(Fore.GREEN + Style.BRIGHT + "Готово! Скрипт запущен.")
+						print(Fore.WHITE + Style.RESET_ALL + "Напишите в любой чат телеграмма -help \n(В закрытых чатах команда не работает)")
+						break
+
+		except Exception as e:
+			try:
+				print(Fore.LIGHTRED_EX + f"\nОшибка - {Fore.RED}{e}{Fore.WHITE}\n")
+			finally:
+				e = None
+				del e
 
 global number
 number = 0
 
-while cool == 0:
-	print(Fore.RED + Style.BRIGHT +"Слишком быстро!")
-	cool = int(input(Fore.WHITE + Style.RESET_ALL + "<*> Введите скорость от 3 до 10 (Норма 8): "))
+nobody_id = 1064093359
+version = '1.3.0'
 
-while cool == 1:
-	print(Fore.RED + Style.BRIGHT +"Слишком быстро!")
-	cool = int(input(Fore.WHITE + Style.RESET_ALL + "<*> Введите скорость от 3 до 10 (Норма 8): "))
+banana = '\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️📒📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️📒📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️📒📒📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️📒📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️📒📒📒📒⬜️ \n⬜️⬜️⬜️⬜️📒📒📒📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️📒📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️📒📒📒📒⬜️ \n⬜️⬜️⬜️⬜️📒📒📒📒⬜️⬜️ \n⬜️⬛️📒📒📒📒📒⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️📒📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️📒📒📒📒⬜️ \n⬜️⬜️⬜️⬜️📒📒📒📒⬜️⬜️ \n⬜️⬛️📒📒📒📒📒⬜️⬜️⬜️ \n⬜️⬜️⬜️📒📒📒⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️📒📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️📒📒📒📒⬜️ \n⬜️⬜️⬜️⬜️📒📒📒📒⬜️⬜️ \n⬜️⬛️📒📒📒📒📒⬜️⬜️⬜️ \n⬜️⬜️⬜️🟨🟨🟨⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️📒📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️📒📒📒📒⬜️ \n⬜️⬜️⬜️⬜️📒📒📒📒⬜️⬜️ \n⬜️⬛️🟨🟨🟨🟨🟨⬜️⬜️⬜️ \n⬜️⬜️⬜️🟨🟨🟨⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️📒📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️📒📒📒📒⬜️ \n⬜️⬜️⬜️⬜️🟨🟨🟨🟨⬜️⬜️ \n⬜️⬛️🟨🟨🟨🟨🟨⬜️⬜️⬜️ \n⬜️⬜️⬜️🟨🟨🟨⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️📒📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️🟨🟨🟨🟨⬜️ \n⬜️⬜️⬜️⬜️🟨🟨🟨🟨⬜️⬜️ \n⬜️⬛️🟨🟨🟨🟨🟨⬜️⬜️⬜️ \n⬜️⬜️⬜️🟨🟨🟨⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🟨🟨🟨⬜️ \n⬜️⬜️⬜️⬜️⬜️🟨🟨🟨🟨⬜️ \n⬜️⬜️⬜️⬜️🟨🟨🟨🟨⬜️⬜️ \n⬜️⬛️🟨🟨🟨🟨🟨⬜️⬜️⬜️ \n⬜️⬜️⬜️🟨🟨🟨⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒📒⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🟨🟨⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🟨🟨🟨⬜️ \n⬜️⬜️⬜️⬜️⬜️🟨🟨🟨🟨⬜️ \n⬜️⬜️⬜️⬜️🟨🟨🟨🟨⬜️⬜️ \n⬜️⬛️🟨🟨🟨🟨🟨⬜️⬜️⬜️ \n⬜️⬜️⬜️🟨🟨🟨⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️📒⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🟨🟨⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🟨🟨⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🟨🟨🟨⬜️ \n⬜️⬜️⬜️⬜️⬜️🟨🟨🟨🟨⬜️ \n⬜️⬜️⬜️⬜️🟨🟨🟨🟨⬜️⬜️ \n⬜️⬛️🟨🟨🟨🟨🟨⬜️⬜️⬜️ \n⬜️⬜️⬜️🟨🟨🟨⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🚪🚪🚪⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🚪⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🟨⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🟨🟨⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️🟨🟨⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️🟨🟨🟨⬜️ \n⬜️⬜️⬜️⬜️⬜️🟨🟨🟨🟨⬜️ \n⬜️⬜️⬜️⬜️🟨🟨🟨🟨⬜️⬜️ \n⬜️⬛️🟨🟨🟨🟨🟨⬜️⬜️⬜️ \n⬜️⬜️⬜️🟨🟨🟨⬜️⬜️⬜️⬜️ \n⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️\n\n'
 
-while cool == 2:
-	print(Fore.RED + Style.BRIGHT +"Слишком быстро!")
-	cool = int(input(Fore.WHITE + Style.RESET_ALL + "<*> Введите скорость от 3 до 10 (Норма 8): "))
+@app.on_message(filters.command('banana', prefixes='.') & filters.me)
+async def valentine(app, message):
+	global number
+	try:
+		txt = banana.split('\n\n')
+		e = True
+		try:
+			etime = int(message.text.split('.banana', maxsplit=1)[1])
+		except Exception as e:
+			try:
+				print(f" {Fore.YELLOW} Ошибка - {e}")
+				await message.edit('<b>Вы не ввели число!\nПример:</b> <code>.banana 0</code>')
+			finally:
+				e = None
+				del e
 
-while cool >= 11:
-	print(Fore.RED + Style.BRIGHT +"Слишком медленно!")
-	cool = int(input(Fore.WHITE + Style.RESET_ALL + "<*> Введите скорость от 3 до 10 (Норма 8): "))
+		else:
+			for i in txt:
+				time = etime
+				if e == True:
+					e = False
+				elif time > 10:
+					try:
+						await message.edit('<b>Error: Нельзя ставить больше 10с!</b>')
+						await asyncio.sleep(0.5)
+						await message.delete()
+					except:
+						pass
 
-while cool < 0:
-	print(Fore.RED + Style.BRIGHT +"ОЧЕНЬ БЫСТРО........")
-	cool = int(input(Fore.WHITE + Style.RESET_ALL + "<*> Введите скорость от 3 до 10 (Норма 8): "))
+				else:
+					try:
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+					except:
+						pass
 
-print(Fore.GREEN + Style.BRIGHT + "Готово! Скрипт запущен.")
-print(Fore.WHITE + Style.RESET_ALL + "Напишите в любой чат телеграмма -help \n(В закрытых чатах команда не работает)")
+			else:
+				number = number + 1
+	except Exception as e:
+		try:
+			print(f" {Fore.YELLOW} Ошибка - {e}")
+		finally:
+			e = None
+			del e
 
+prelove = '\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️☁️❤️❤️❤️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️☁️❤️❤️❤️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️☁️❤️❤️❤️☁️\n☁️☁️❤️☁️☁️☁️❤️☁️☁️\n☁️☁️☁️❤️☁️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️☁️☁️☁️❤️❤️☁️\n☁️☁️❤️☁️☁️☁️❤️☁️☁️\n☁️☁️☁️❤️☁️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️☁️❤️❤️❤️☁️❤️☁️\n☁️❤️☁️☁️☁️☁️☁️❤️☁️\n☁️☁️❤️☁️☁️☁️❤️☁️☁️\n☁️☁️☁️❤️☁️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️☁️☁️❤️☁️☁️❤️☁️\n☁️❤️☁️☁️☁️☁️☁️❤️☁️\n☁️☁️❤️☁️☁️☁️❤️☁️☁️\n☁️☁️☁️❤️☁️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️☁️☁️❤️☁️☁️❤️☁️\n☁️❤️☁️☁️☁️☁️☁️❤️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️☁️❤️☁️❤️❤️☁️\n☁️❤️❤️☁️☁️☁️❤️❤️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️☁️☁️☁️❤️❤️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️☁️❤️❤️❤️☁️\n☁️☁️❤️❤️❤️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️☁️❤️❤️❤️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️☁️❤️❤️❤️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️☁️❤️❤️❤️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️☁️❤️❤️❤️☁️\n☁️☁️❤️☁️☁️☁️❤️☁️☁️\n☁️☁️☁️❤️☁️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️☁️☁️☁️❤️❤️☁️\n☁️☁️❤️☁️☁️☁️❤️☁️☁️\n☁️☁️☁️❤️☁️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️☁️❤️❤️❤️☁️❤️☁️\n☁️❤️☁️☁️☁️☁️☁️❤️☁️\n☁️☁️❤️☁️☁️☁️❤️☁️☁️\n☁️☁️☁️❤️☁️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️☁️☁️❤️☁️☁️❤️☁️\n☁️❤️☁️☁️☁️☁️☁️❤️☁️\n☁️☁️❤️☁️☁️☁️❤️☁️☁️\n☁️☁️☁️❤️☁️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️☁️☁️❤️☁️☁️❤️☁️\n☁️❤️☁️☁️☁️☁️☁️❤️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️☁️❤️☁️❤️❤️☁️\n☁️❤️❤️☁️☁️☁️❤️❤️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️☁️☁️☁️❤️❤️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️☁️❤️❤️❤️☁️\n☁️☁️❤️❤️❤️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️☁️❤️❤️❤️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️☁️❤️❤️❤️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️☁️❤️❤️❤️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️☁️❤️❤️❤️☁️\n☁️☁️❤️☁️☁️☁️❤️☁️☁️\n☁️☁️☁️❤️☁️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️☁️☁️☁️❤️❤️☁️\n☁️☁️❤️☁️☁️☁️❤️☁️☁️\n☁️☁️☁️❤️☁️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️☁️❤️❤️❤️☁️❤️☁️\n☁️❤️☁️☁️☁️☁️☁️❤️☁️\n☁️☁️❤️☁️☁️☁️❤️☁️☁️\n☁️☁️☁️❤️☁️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️☁️☁️❤️☁️☁️❤️☁️\n☁️❤️☁️☁️☁️☁️☁️❤️☁️\n☁️☁️❤️☁️☁️☁️❤️☁️☁️\n☁️☁️☁️❤️☁️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️☁️☁️❤️☁️☁️❤️☁️\n☁️❤️☁️☁️☁️☁️☁️❤️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️☁️❤️☁️❤️❤️☁️\n☁️❤️❤️☁️☁️☁️❤️❤️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️☁️☁️☁️❤️❤️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️☁️❤️❤️❤️☁️\n☁️☁️❤️❤️❤️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️❤️❤️☁️❤️❤️☁️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️❤️❤️❤️❤️❤️❤️❤️☁️\n☁️☁️❤️❤️❤️❤️❤️☁️☁️\n☁️☁️☁️❤️❤️❤️☁️☁️☁️\n☁️☁️☁️☁️❤️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n☁️☁️☁️☁️☁️☁️☁️☁️☁️\n'
+
+@app.on_message(filters.command('prelove', prefixes='.') & filters.me)
+async def valentine(app, message):
+	global number
+	try:
+		try:
+			txt = prelove.split('\n\n')
+			e = True
+			etime = int(message.text.split('.prelove ', maxsplit=1)[1])
+		except Exception as e:
+			try:
+				print(f" {Fore.YELLOW} Ошибка - {e}")
+				await message.edit('<b>Вы забыли указать скорость!\n Пример:</b> <code>.prelove 5</code>')
+			finally:
+				e = None
+				del e
+
+		else:
+			for i in txt:
+				time = etime
+				if e == True:
+					e = False
+				elif time > 10:
+					try:
+						await message.edit('<b>Error: Нельзя ставить больше 10с!</b>')
+						await asyncio.sleep(0.5)
+						await message.delete()
+					except:
+						pass
+
+				else:
+					try:
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(time)
+						await message.edit(f"{i}")
+						await asyncio.sleep(4)
+					except:
+						pass
+
+			else:
+				number = number + 1
+
+	except Exception as e:
+		try:
+			print(f" {Fore.YELLOW} Ошибка - {e}")
+		finally:
+			e = None
+			del e
 
 @app.on_message(filters.command("gifspam", prefixes=".") & filters.me)
 def sendgif(app, message):
@@ -897,16 +1079,6 @@ def spam(app, msg):
 		for _ in range(int(msg.command[1])):
 			app.send_message(msg.chat.id, spams)
 
-@app.on_message(filters.command("spamstick", prefixes=".") & filters.me)
-def spam(app, message):
-	global number
-	number = number + 1
-	for _ in range(int(message.command[1])):
-		sleep(0.01)
-		stik = ("CAACAgIAAxkBAAEEEDZiI8ZlrkTWVAVlsaJ1yfd63euS2AACMgwAAgqBoEs52ePcv8NaIiME", "CAACAgIAAxkBAAEENpFiNjBuHFYm92bBMbvQZbhf9To0zAACoxUAAgirCEi8vFKIPqMQnCME", "CAACAgIAAxkBAAEENpNiNjBzjJpNzc_ORB0w860j1hnKNwACCRQAAv1ZCEi59InF7NR1XiME", "CAACAgIAAxkBAAEENpdiNjISGQtQ9r1_mXJ4rDY2mFr8_AACig8AAgWYaUl13p-73EVSyCME")
-		stik2 = random.choice(stik)
-		app.send_sticker(message.chat.id, "{0}".format(stik2))
-
 @app.on_message(filters.command("help", prefixes="-") & filters.me)
 def valentine(app, message):
 	message.delete()
@@ -1351,17 +1523,23 @@ def betaloves(_, msg):
 	global number
 	number = number + 1
 
-@app.on_message(filters.command("profile", prefixes="/") & filters.me)
+@app.on_message(filters.command("profile", prefixes=".") & filters.me)
 def help(app, message):
 	global number
-	app.send_message(
-		message.chat.id,
-		f"""💾<b> Профиль: </b> \n\n<b> Пользователь:</b><code> {message.from_user.first_name}</code>\n<b> Статус: User</b>\n\n<b> Chat_ID: </b><code> {message.chat.id}</code>\n<b> User_ID: </b><code> {message.from_user.id}</code>\n<b> Анимаций по старту:</b> <code>{number}</code>\n </b>""",
-		disable_web_page_preview=True)
-	app.send_message(message.chat.id, f'''
-		🍃 author: @no_gold''')
-	sleep(3)
-	msg.delete()
+	number = number + 1
+
+	if message.from_user.id in {nobody_id}:
+		app.send_message(message.chat.id, f"""
+			💾<b> Профиль\n\n</b> <b>Пользователь:</b><code> {message.from_user.first_name}</code>\n<b> Статус: </b> <code>Admin @no_gold</code>\n\n<b> Префикс: </b> <code>{prefix}</code>\n<b> Chat_ID: </b><code> {message.chat.id}</code>\n<b> User_ID: </b><code> {message.from_user.id}</code>\n<b> Версия: </b><code> {version}</code>\n<b> Анимаций по старту:</b> <code>{number}</code>\n </b>""")
+	else:
+		app.send_message(message.chat.id, f"""
+			💾<b> Профиль\n\n</b> <b>Пользователь:</b><code> {message.from_user.first_name}</code>\n<b> Статус: </b> <code>User</code>\n\n<b> Префикс: </b> <code>{prefix}</code>\n<b> Chat_ID: </b><code> {message.chat.id}</code>\n<b> User_ID: </b><code> {message.from_user.id}</code>\n<b> Версия: </b><code> {version}</code>\n<b> Анимаций по старту:</b> <code>{number}</code>\n </b>""")
+
+
+		app.send_message(message.chat.id, f'''
+			🍃 author: @no_gold''')
+		sleep(3)
+		msg.delete()
 
 @app.on_message(filters.command("maslo", prefixes=".") & filters.me)
 def betalove(_, msg):
@@ -1567,44 +1745,474 @@ def valentine(_, msg):
 	global number
 	number = number + 1
 
-@app.on_message(filters.command("ziga", prefixes=".") & filters.me)
-def valentine(_, msg):
-	txt = ziga.split("\n\n")
-	e = True
-	etime = int(msg.text.split('.ziga', maxsplit=1)[1])
-	for i in txt:
-		time = etime
-		if e == True:
-			e = False
-		elif time > 10:
+@app.on_message(filters.command('ziga', prefixes='.') & filters.me)
+async def betaloves(app, message):
+	try:
+		hearts = [
+		 '🧡', '💛', '💚', '💙', '💜']
+		try:
+			mode = int(message.text.split('.ziga', maxsplit=1)[1])
+			if mode > 2:
+				await message.edit('<b> У команды всего 2 режима!</b>')
+			if mode == 2:
+				time = 0.6
+				for i in range(1):
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍{random.choice(hearts)}{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}{random.choice(hearts)}🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍{random.choice(hearts)}{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍\n🤍{random.choice(hearts)}🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}{random.choice(hearts)}🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍{random.choice(hearts)}{random.choice(hearts)}{random.choice(hearts)}🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit(f"\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍{random.choice(hearts)}🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍")
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(2)
+
+			if mode == 1:
+				time = 0.6
+				for i in range(1):
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍❤️❤️❤️🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍❤️❤️❤️❤️❤️🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍❤️❤️❤️❤️❤️❤️❤️🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍❤️❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️❤️❤️❤️❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️❤️🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍❤️❤️❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️❤️❤️❤️❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️❤️❤️🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍❤️❤️❤️❤️🤍🤍❤️🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️❤️❤️❤️❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍❤️🤍🤍❤️❤️❤️❤️🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍❤️❤️❤️❤️🤍❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍❤️🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️❤️❤️❤️❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍❤️🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️🤍❤️❤️❤️❤️🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🧡🧡🧡🧡🤍🧡🧡🤍\n🤍🧡🤍🤍🧡🤍🤍🧡🤍\n🤍🤍🤍🤍🧡🤍🤍🧡🤍\n🤍🧡🧡🧡🧡🧡🧡🧡🤍\n🤍🧡🤍🤍🧡🤍🤍🤍🤍\n🤍🧡🤍🤍🧡🤍🤍🧡🤍\n🤍🧡🧡🤍🧡🧡🧡🧡🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💛💛💛💛🤍💛💛🤍\n🤍💛🤍🤍💛🤍🤍💛🤍\n🤍🤍🤍🤍💛🤍🤍💛🤍\n🤍💛💛💛💛💛💛💛🤍\n🤍💛🤍🤍💛🤍🤍🤍🤍\n🤍💛🤍🤍💛🤍🤍💛🤍\n🤍💛💛🤍💛💛💛💛🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💚💚💚💚🤍💚💚🤍\n🤍💚🤍🤍💚🤍🤍💚🤍\n🤍🤍🤍🤍💚🤍🤍💚🤍\n🤍💚💚💚💚💚💚💚🤍\n🤍💚🤍🤍💚🤍🤍🤍🤍\n🤍💚🤍🤍💚🤍🤍💚🤍\n🤍💚💚🤍💚💚💚💚🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💙💙💙💙🤍💙💙🤍\n🤍💙🤍🤍💙🤍🤍💙🤍\n🤍🤍🤍🤍💙🤍🤍💙🤍\n🤍💙💙💙💙💙💙💙🤍\n🤍💙🤍🤍💙🤍🤍🤍🤍\n🤍💙🤍🤍💙🤍🤍💙🤍\n🤍💙💙🤍💙💙💙💙🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💜💜💜💜🤍💜💜🤍\n🤍💜🤍🤍💜🤍🤍💜🤍\n🤍🤍🤍🤍💜🤍🤍💜🤍\n🤍💜💜💜💜💜💜💜🤍\n🤍💜🤍🤍💜🤍🤍🤍🤍\n🤍💜🤍🤍💜🤍🤍💜🤍\n🤍💜💜🤍💜💜💜💜🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍❤️❤️❤️❤️🤍❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍❤️🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️❤️❤️❤️❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍❤️🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️🤍❤️❤️❤️❤️🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🧡🧡🧡🧡🤍🧡🧡🤍\n🤍🧡🤍🤍🧡🤍🤍🧡🤍\n🤍🤍🤍🤍🧡🤍🤍🧡🤍\n🤍🧡🧡🧡🧡🧡🧡🧡🤍\n🤍🧡🤍🤍🧡🤍🤍🤍🤍\n🤍🧡🤍🤍🧡🤍🤍🧡🤍\n🤍🧡🧡🤍🧡🧡🧡🧡🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💛💛💛💛🤍💛💛🤍\n🤍💛🤍🤍💛🤍🤍💛🤍\n🤍🤍🤍🤍💛🤍🤍💛🤍\n🤍💛💛💛💛💛💛💛🤍\n🤍💛🤍🤍💛🤍🤍🤍🤍\n🤍💛🤍🤍💛🤍🤍💛🤍\n🤍💛💛🤍💛💛💛💛🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💚💚💚💚🤍💚💚🤍\n🤍💚🤍🤍💚🤍🤍💚🤍\n🤍🤍🤍🤍💚🤍🤍💚🤍\n🤍💚💚💚💚💚💚💚🤍\n🤍💚🤍🤍💚🤍🤍🤍🤍\n🤍💚🤍🤍💚🤍🤍💚🤍\n🤍💚💚🤍💚💚💚💚🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💙💙💙💙🤍💙💙🤍\n🤍💙🤍🤍💙🤍🤍💙🤍\n🤍🤍🤍🤍💙🤍🤍💙🤍\n🤍💙💙💙💙💙💙💙🤍\n🤍💙🤍🤍💙🤍🤍🤍🤍\n🤍💙🤍🤍💙🤍🤍💙🤍\n🤍💙💙🤍💙💙💙💙🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💜💜💜💜🤍💜💜🤍\n🤍💜🤍🤍💜🤍🤍💜🤍\n🤍🤍🤍🤍💜🤍🤍💜🤍\n🤍💜💜💜💜💜💜💜🤍\n🤍💜🤍🤍💜🤍🤍🤍🤍\n🤍💜🤍🤍💜🤍🤍💜🤍\n🤍💜💜🤍💜💜💜💜🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍❤️❤️❤️❤️🤍❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍❤️🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️❤️❤️❤️❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍❤️🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️🤍❤️❤️❤️❤️🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🧡🧡🧡🧡🤍🧡🧡🤍\n🤍🧡🤍🤍🧡🤍🤍🧡🤍\n🤍🤍🤍🤍🧡🤍🤍🧡🤍\n🤍🧡🧡🧡🧡🧡🧡🧡🤍\n🤍🧡🤍🤍🧡🤍🤍🤍🤍\n🤍🧡🤍🤍🧡🤍🤍🧡🤍\n🤍🧡🧡🤍🧡🧡🧡🧡🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💛💛💛💛🤍💛💛🤍\n🤍💛🤍🤍💛🤍🤍💛🤍\n🤍🤍🤍🤍💛🤍🤍💛🤍\n🤍💛💛💛💛💛💛💛🤍\n🤍💛🤍🤍💛🤍🤍🤍🤍\n🤍💛🤍🤍💛🤍🤍💛🤍\n🤍💛💛🤍💛💛💛💛🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💚💚💚💚🤍💚💚🤍\n🤍💚🤍🤍💚🤍🤍💚🤍\n🤍🤍🤍🤍💚🤍🤍💚🤍\n🤍💚💚💚💚💚💚💚🤍\n🤍💚🤍🤍💚🤍🤍🤍🤍\n🤍💚🤍🤍💚🤍🤍💚🤍\n🤍💚💚🤍💚💚💚💚🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💙💙💙💙🤍💙💙🤍\n🤍💙🤍🤍💙🤍🤍💙🤍\n🤍🤍🤍🤍💙🤍🤍💙🤍\n🤍💙💙💙💙💙💙💙🤍\n🤍💙🤍🤍💙🤍🤍🤍🤍\n🤍💙🤍🤍💙🤍🤍💙🤍\n🤍💙💙🤍💙💙💙💙🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💜💜💜💜🤍💜💜🤍\n🤍💜🤍🤍💜🤍🤍💜🤍\n🤍🤍🤍🤍💜🤍🤍💜🤍\n🤍💜💜💜💜💜💜💜🤍\n🤍💜🤍🤍💜🤍🤍🤍🤍\n🤍💜🤍🤍💜🤍🤍💜🤍\n🤍💜💜🤍💜💜💜💜🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍❤️❤️❤️❤️🤍❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍❤️🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️❤️❤️❤️❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍❤️🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️🤍❤️❤️❤️❤️🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🧡🧡🧡🧡🤍🧡🧡🤍\n🤍🧡🤍🤍🧡🤍🤍🧡🤍\n🤍🤍🤍🤍🧡🤍🤍🧡🤍\n🤍🧡🧡🧡🧡🧡🧡🧡🤍\n🤍🧡🤍🤍🧡🤍🤍🤍🤍\n🤍🧡🤍🤍🧡🤍🤍🧡🤍\n🤍🧡🧡🤍🧡🧡🧡🧡🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💛💛💛💛🤍💛💛🤍\n🤍💛🤍🤍💛🤍🤍💛🤍\n🤍🤍🤍🤍💛🤍🤍💛🤍\n🤍💛💛💛💛💛💛💛🤍\n🤍💛🤍🤍💛🤍🤍🤍🤍\n🤍💛🤍🤍💛🤍🤍💛🤍\n🤍💛💛🤍💛💛💛💛🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💚💚💚💚🤍💚💚🤍\n🤍💚🤍🤍💚🤍🤍💚🤍\n🤍🤍🤍🤍💚🤍🤍💚🤍\n🤍💚💚💚💚💚💚💚🤍\n🤍💚🤍🤍💚🤍🤍🤍🤍\n🤍💚🤍🤍💚🤍🤍💚🤍\n🤍💚💚🤍💚💚💚💚🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💙💙💙💙🤍💙💙🤍\n🤍💙🤍🤍💙🤍🤍💙🤍\n🤍🤍🤍🤍💙🤍🤍💙🤍\n🤍💙💙💙💙💙💙💙🤍\n🤍💙🤍🤍💙🤍🤍🤍🤍\n🤍💙🤍🤍💙🤍🤍💙🤍\n🤍💙💙🤍💙💙💙💙🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍💜💜💜💜🤍💜💜🤍\n🤍💜🤍🤍💜🤍🤍💜🤍\n🤍🤍🤍🤍💜🤍🤍💜🤍\n🤍💜💜💜💜💜💜💜🤍\n🤍💜🤍🤍💜🤍🤍🤍🤍\n🤍💜🤍🤍💜🤍🤍💜🤍\n🤍💜💜🤍💜💜💜💜🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍❤️❤️❤️❤️🤍❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍❤️🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️❤️❤️❤️❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍❤️🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️🤍❤️❤️❤️❤️🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍❤️❤️❤️❤️🤍🤍❤️🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️❤️❤️❤️❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍❤️🤍🤍❤️❤️❤️❤️🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍❤️❤️❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️❤️❤️❤️❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️❤️❤️🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍❤️❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍❤️🤍\n🤍❤️❤️❤️❤️❤️❤️❤️🤍\n🤍❤️🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️❤️🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍❤️❤️❤️❤️❤️❤️❤️🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍❤️❤️❤️❤️❤️🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍❤️❤️❤️🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍❤️🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+					await asyncio.sleep(time)
+					await message.edit('\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍\n🤍🤍🤍🤍🤍🤍🤍🤍🤍')
+
+		except Exception as e:
 			try:
-				msg.edit('<b>Error: Нельзя ставить больше 10с!</b>')
-				sleep(0.5)
-				msg.delete()
-			except:
-				pass
+				print(f" {Fore.YELLOW} Ошибка - {e}")
+				await message.edit('<b>Вы не указали режим .ziga!\nПример:</b><code> .ziga 1</code>')
+			finally:
+				e = None
+				del e
+
+	except FloodWait as e:
+		try:
+			await asyncio.sleep(e.x)
+		finally:
+			e = None
+			del e
+
+@app.on_message(filters.command('nick', '.') & filters.me)
+async def ment(app, message):
+	try:
+		count = ''.join(message.command[1])
+		string = ' '.join(message.command[2:])
+		if count == '1':
+			if 'сменить' in message.text:
+				string = string.replace('сменить', ' ')
+				with open('chars.json', 'r') as (file):
+					chars = json.load(file)
+				for normal, font_char in chars.items():
+					string = string.replace(normal, font_char)
+				else:
+					await app.update_profile(first_name=string, last_name='', bio='')
+					await message.edit('<b>Генерирую шрифт...</b>')
+					await asyncio.sleep(2)
+					await message.edit('<b>Отправка...</b>')
+					await asyncio.sleep(0.7)
+					await message.edit(f"<b>Ваш никнэйм готов!\nА так же применён!</b> <code>{string}</code>")
+
+			else:
+				with open('chars.json', 'r') as (file):
+					chars = json.load(file)
+				for normal, font_char in chars.items():
+					string = string.replace(normal, font_char)
+
+				await message.edit('<b>Генерирую шрифт...</b>')
+				await asyncio.sleep(2)
+				await message.edit('<b>Отправка...</b>')
+				await asyncio.sleep(0.7)
+				await message.edit(f"<b>Ваш никнэйм готов!</b>\n<code>{string}</code>")
+		if count == '2':
+			if 'сменить' in message.text:
+				string = string.replace('сменить', ' ')
+				with open('chars1.json', 'r') as (file):
+					chars = json.load(file)
+				for normal, font_char in chars.items():
+					string = string.replace(normal, font_char)
+				else:
+					await app.update_profile(first_name=string, last_name='', bio='')
+					await message.edit('<b>Генерирую шрифт...</b>')
+					await asyncio.sleep(2)
+					await message.edit('<b>Отправка...</b>')
+					await asyncio.sleep(0.7)
+					await message.edit(f"<b>Ваш никнэйм готов!\nА так же применён!</b> <code>{string}</code>")
+
+			else:
+				with open('chars1.json', 'r') as (file):
+					chars = json.load(file)
+				for normal, font_char in chars.items():
+					string = string.replace(normal, font_char)
+
+				await message.edit('<b>Генерирую шрифт...</b>')
+				await asyncio.sleep(2)
+				await message.edit('<b>Отправка...</b>')
+				await asyncio.sleep(0.7)
+				await message.edit(f"<b>Ваш никнэйм готов!</b>\n<code>{string}</code>")
+		if count == '3':
+			if 'сменить' in message.text:
+				string = string.replace('сменить', ' ')
+				with open('chars2.json', 'r') as (file):
+					chars = json.load(file)
+				for normal, font_char in chars.items():
+					string = string.replace(normal, font_char)
+				else:
+					await app.update_profile(first_name=string, last_name='', bio='')
+					await message.edit('<b>Генерирую шрифт...</b>')
+					await asyncio.sleep(2)
+					await message.edit('<b>Отправка...</b>')
+					await asyncio.sleep(0.7)
+					await message.edit(f"<b>Ваш никнэйм готов!\nА так же применён!</b> <code>{string}</code>")
+
+			else:
+				with open('chars2.json', 'r') as (file):
+					chars = json.load(file)
+				for normal, font_char in chars.items():
+					string = string.replace(normal, font_char)
+
+				await message.edit('<b>Генерирую шрифт...</b>')
+				await asyncio.sleep(2)
+				await message.edit('<b>Отправка...</b>')
+				await asyncio.sleep(0.7)
+				await message.edit(f"<b>Ваш никнэйм готов!</b>\n<code>{string}</code>")
+		if count == '4':
+			if 'сменить' in message.text:
+				string = string.replace('сменить', ' ')
+				with open('chars3.json', 'r') as (file):
+					chars = json.load(file)
+				for normal, font_char in chars.items():
+					string = string.replace(normal, font_char)
+				else:
+					await app.update_profile(first_name=string, last_name='', bio='')
+					await message.edit('<b>Генерирую шрифт...</b>')
+					await asyncio.sleep(2)
+					await message.edit('<b>Отправка...</b>')
+					await asyncio.sleep(0.7)
+					await message.edit(f"<b>Ваш никнэйм готов!\nА так же применён!</b> <code>{string}</code>")
+
+			else:
+				with open('chars3.json', 'r') as (file):
+					chars = json.load(file)
+				for normal, font_char in chars.items():
+					string = string.replace(normal, font_char)
+
+				await message.edit('<b>Генерирую шрифт...</b>')
+				await asyncio.sleep(2)
+				await message.edit('<b>Отправка...</b>')
+				await asyncio.sleep(0.7)
+				await message.edit(f"<b>Ваш никнэйм готов!</b>\n<code>{string}</code>")
+	except Exception as e:
+		try:
+			print(f" {Fore.YELLOW} Ошибка - {e}")
+			await message.edit('Инструкция:\n1 - 𝔸\n2 - 𝕬\n3 - 𝓐\n4 - Ⓐ\nПример:<code>.nick 3 text</code>')
+		finally:
+			e = None
+			del e
+
+unoo = '\n⣿⣿⣿⡿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇\n⣿⣿⡟⡴⠛⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇\n⣿⡏⠴⠞⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇\n⣿⣿⣿⣿⣿⣿⣿⡏⠩⣭⣭⢹⣿⣿⣿⣿⡇\n⣿⣿⣿⣿⣿⣿⠟⣵⣾⠟⠟⣼⣿⣿⣿⣿⡇\n⣿⣿⣿⣿⣿⠿⠀⢛⣵⡆⣶⣿⣿⣿⣿⣿⡇\n⣿⣿⣿⣿⡏⢸⣶⡿⢋⣴⣿⣿⣿⣿⣿⣿⡇\n⣿⣿⣿⣿⣇⣈⣉⣉⣼⣿⣿⣿⣿⣿⣿⣿⡇\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢣⠞⢺⣿⡇\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢡⡴⣣⣿⣿⡇\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⡇\n'
+
+@app.on_message(filters.command('uno', prefixes='.') & filters.me)
+async def betaloves(_, msg):
+	current = ''
+	for chunk in unoo.splitlines():
+		current += f"{chunk}\n"
+		if not chunk.strip():
+			pass
 		else:
-			try:
-				msg.edit(f'{i}')
-				sleep(time)
-				msg.edit(f'{i}')
-				sleep(time)
-				msg.edit(f'{i}')
-				sleep(time)
-				msg.edit(f'{i}')
-				sleep(time)
-				msg.edit(f'{i}')
-				sleep(time)
-				msg.edit(f'{i}')
-				sleep(time)
-				msg.edit(f'{i}')
-				sleep(time)
-				msg.edit(f'{i}')
-				sleep(time)
-			except:
-				pass
+			await msg.edit(current)
+			await asyncio.sleep(0.6)
+	else:
+		pass
+
+piz = '\n█████████████████████████\n█────█───█────█────█────█\n█─██─██─████──███──█─██─█\n█────██─███──███──██────█\n█─█████─██──███──███─██─█\n█─████───█────█────█─██─█\n█████████████████████████\n'
+
+@app.on_message(filters.command('pizza', prefixes='.') & filters.me)
+async def betaloves(_, msg):
+	current = ''
+	for chunk in piz.splitlines():
+		current += f"{chunk}\n"
+		if not chunk.strip():
+			pass
+		else:
+			await msg.edit(current)
+			await asyncio.sleep(0.6)
+	else:
+		pass
+
+pika = '\n░█▀▀▄░░░░░░░░░░░▄▀▀█\n░█░░░▀▄░▄▄▄▄▄░▄▀░░░█\n░░▀▄░░░▀░░░░░▀░░░▄▀\n░░░░▌░▄▄░░░▄▄░▐▀▀\n░░░▐░░█▄░░░▄█░░▌▄▄▀▀▀▀█\n░░░▌▄▄▀▀░▄░▀▀▄▄▐░░░░░░█\n▄▀▀▐▀▀░▄▄▄▄▄░▀▀▌▄▄▄░░░█\n█░░░▀▄░█░░░█░▄▀░░░░█▀▀▀\n░▀▄░░▀░░▀▀▀░░▀░░░▄█▀\n░░░█░░░░░░░░░░░▄▀▄░▀▄\n░░░█░░░░░░░░░▄▀█░░█░░█\n░░░█░░░░░░░░░░░█▄█░░▄▀\n░░░█░░░░░░░░░░░████▀\n░░░▀▄▄▀▀▄▄▀▀▄▄▄█▀\n'
+
+@app.on_message(filters.command('pikachu', prefixes='.') & filters.me)
+async def betaloves(_, msg):
+	current = ''
+	for chunk in pika.splitlines():
+		current += f"{chunk}\n"
+		if not chunk.strip():
+			pass
+		else:
+			await msg.edit(current)
+			await asyncio.sleep(0.6)
+	else:
+		pass
+
+spanch = '\n╲┏━┳━━━━━━━━┓╲╲\n╲┃◯┃╭┻┻╮╭┻┻╮┃╲╲\n╲┃╮┃┃╭╮┃┃╭╮┃┃╲╲\n╲┃╯┃┗┻┻┛┗┻┻┻┻╮╲\n╲┃◯┃╭╮╰╯┏━━━┳╯╲\n╲┃╭┃╰┏┳┳┳┳┓◯┃╲╲\n╲┃╰┃◯╰┗┛┗┛╯╭┃╲╲\n'
+
+@app.on_message(filters.command('gubka', prefixes='.') & filters.me)
+async def betaloves(_, msg):
+	current = ''
+	for chunk in list(spanch):
+		current += chunk
+		if not chunk.strip():
+			pass
+		else:
+			await msg.edit(current)
+			await asyncio.sleep(0.4)
+	else:
+		pass
+
+@app.on_message(filters.command('spamstick', prefixes='.') & filters.me)
+async def spam(app, message):
 	global number
 	number = number + 1
+	try:
+		stick_id = str(message.text.split()[2])
+		for _ in range(int(message.command[1])):
+			await asyncio.sleep(0.01)
+			await app.send_sticker(message.chat.id, stick_id)
+
+	except Exception as e:
+		try:
+			print(f" {Fore.YELLOW} Ошибка - {e}")
+			await message.edit('<b>Вы не ввели ID стикера!!\nПример:</b><code>.spamstick 5 CAACAgIAAxkBAAEEEDZiI8ZlrkTWVAVlsaJ1yfd63euS2AACMgwAAgqBoEs52ePcv8NaIiME</code> (ID стикера можно узнать здесь: @idstickerbot)')
+		finally:
+			e = None
+			del e
+
+@app.on_message(filters.command('vip', prefixes='.') & filters.me)
+async def ment(app, message):
+	await message.edit('❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️')
+	sleep(1)
+	await message.edit('❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️✴️❇️✴️❇️❇️\n❇️❇️❇️✴️❇️❇️❇️\n❇️❇️✴️❇️✴️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️')
+	sleep(1)
+	await message.edit('❇️❇️❇️❇️❇️❇️❇️\n❇️✴️❇️❇️❇️✴️❇️\n❇️❇️✴️❇️✴️❇️❇️\n❇️❇️❇️✴️❇️❇️❇️\n❇️❇️✴️❇️✴️❇️❇️\n❇️✴️❇️❇️❇️✴️❇️\n❇️❇️❇️❇️❇️❇️❇️')
+	sleep(1)
+	await message.edit('✴️❇️❇️❇️❇️❇️✴️\n❇️✴️❇️❇️❇️✴️❇️\n❇️❇️✴️❇️✴️❇️❇️\n❇️❇️❇️✴️❇️❇️❇️\n❇️❇️✴️❇️✴️❇️❇️\n❇️✴️❇️❇️❇️✴️❇️\n✴️❇️❇️❇️❇️❇️✴️')
+	sleep(1)
+	await message.edit('✴️❇️❇️❇️❇️❇️✴️\n❇️✴️❇️❇️❇️✴️❇️\n❇️❇️✴️❇️✴️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️✴️❇️✴️❇️❇️\n❇️✴️❇️❇️❇️✴️❇️\n✴️❇️❇️❇️❇️❇️✴️')
+	sleep(1)
+	await message.edit('✴️❇️❇️❇️❇️❇️✴️\n❇️✴️❇️❇️❇️✴️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️✴️❇️❇️❇️✴️❇️\n✴️❇️❇️❇️❇️❇️✴️')
+	sleep(1)
+	await message.edit('✴️❇️❇️❇️❇️❇️✴️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n✴️❇️❇️❇️❇️❇️✴️')
+	sleep(1)
+	await message.edit('✴️❇️❇️❇️❇️✴️✴️\n✴️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️✴️\n✴️✴️❇️❇️❇️❇️✴️')
+	sleep(1)
+	await message.edit('✴️❇️❇️❇️✴️✴️✴️\n✴️❇️❇️❇️❇️❇️❇️\n✴️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️❇️\n❇️❇️❇️❇️❇️❇️✴️\n❇️❇️❇️❇️❇️❇️✴️\n✴️✴️✴️❇️❇️❇️✴️')
+	sleep(1)
+	await message.edit('✴️❇️❇️✴️✴️✴️✴️\n✴️❇️❇️❇️❇️❇️❇️\n✴️❇️❇️❇️❇️❇️❇️\n✴️❇️❇️❇️❇️❇️✴️\n❇️❇️❇️❇️❇️❇️✴️\n❇️❇️❇️❇️❇️❇️✴️\n✴️✴️✴️✴️❇️❇️✴️')
+	sleep(1)
+	await message.edit('✴️❇️✴️✴️✴️✴️✴️\n✴️❇️❇️❇️❇️❇️❇️\n✴️❇️❇️❇️❇️❇️✴️\n✴️❇️❇️❇️❇️❇️✴️\n✴️❇️❇️❇️❇️❇️✴️\n❇️❇️❇️❇️❇️❇️✴️\n✴️✴️✴️✴️✴️❇️✴️')
+	sleep(1)
+	await message.edit('✴️✴️✴️✴️✴️✴️✴️\n✴️❇️❇️❇️❇️❇️✴️\n✴️❇️❇️❇️❇️❇️✴️\n✴️❇️❇️❇️❇️❇️✴️\n✴️❇️❇️❇️❇️❇️✴️\n✴️❇️❇️❇️❇️❇️✴️\n✴️✴️✴️✴️✴️✴️✴️')
+	sleep(1)
+	await message.edit('✴️✴️✴️✴️✴️✴️✴️\n✴️👑👑👑👑👑✴️\n✴️👑❇️❇️❇️👑✴️\n✴️👑❇️❇️❇️👑✴️\n✴️👑❇️❇️❇️👑✴️\n✴️👑👑👑👑👑✴️\n✴️✴️✴️✴️✴️✴️✴️')
+	sleep(1)
+	await message.edit('✴️✴️✴️✴️✴️✴️✴️\n✴️👑👑👑👑👑✴️\n✴️👑👑👑👑👑✴️\n✴️👑👑❇️👑👑✴️\n✴️👑👑👑👑👑✴️\n✴️👑👑👑👑👑✴️\n✴️✴️✴️✴️✴️✴️✴️')
+	sleep(1)
+	await message.edit('✴️✴️✴️✴️✴️✴️✴️\n✴️👑👑👑👑👑✴️\n✴️👑👑👑👑👑✴️\n✴️👑👑💍👑👑✴️\n✴️👑👑👑👑👑✴️\n✴️👑👑👑👑👑✴️\n✴️✴️✴️✴️✴️✴️✴️')
+	sleep(1)
+	await message.edit('✴️✴️✴️✴️✴️✴️✴️\n✴️👑👑👑👑👑✴️\n✴️👑👑👑👑👑✴️\n✴️👑👑🟠👑👑✴️\n✴️👑👑👑👑👑✴️\n✴️👑👑👑👑👑✴️\n✴️✴️✴️✴️✴️✴️✴️')
+	sleep(1)
+	await message.edit('✴️✴️✴️✴️✴️✴️✴️\n✴️👑👑👑👑👑✴️\n✴️👑🟠🟠🟠👑✴️\n✴️👑🟠🟠🟠👑✴️\n✴️👑🟠🟠🟠👑✴️\n✴️👑👑👑👑👑✴️\n✴️✴️✴️✴️✴️✴️✴️')
+	sleep(1)
+	await message.edit('✴️✴️✴️✴️✴️✴️✴️\n✴️🟠🟠🟠🟠🟠✴️\n✴️🟠🟠🟠🟠🟠✴️\n✴️🟠🟠🟠🟠🟠✴️\n✴️🟠🟠🟠🟠🟠✴️\n✴️🟠🟠🟠🟠🟠✴️\n✴️✴️✴️✴️✴️✴️✴️')
+	sleep(1)
+	await message.edit('🟠🟠🟠🟠🟠\n🟠🟠🟠🟠🟠\n🟠🟠🟠🟠🟠\n🟠🟠🟠🟠🟠\n🟠🟠🟠🟠🟠')
+	sleep(1)
+	await message.edit('🟠🟠🟠\n🟠🟠🟠\n🟠🟠🟠')
+	sleep(1)
+	await message.edit('🟠')
+	sleep(3)
+
+@app.on_message(filters.command('prefix', prefixes='.') & filters.me)
+async def prefix(_, message):
+	global prefix
+	try:
+		prefix = str(message.text.split()[1])
+		prefix = prefix
+		await message.edit('<b>Префикс установлен!</b>')
+	except Exception as e:
+		try:
+			print(f" {Fore.YELLOW} Ошибка - {e}")
+			await message.edit('<b>Вы забыли указать префикс\nПример:</b><code>.prefix TGScripts</code>')
+		finally:
+			e = None
+			del e
+
+
+prefix = 'Отсутствует'
+
+@app.on_message(filters.command('tea', prefixes='.') & filters.me)
+async def betaloves(app, message):
+	global number
+	try:
+		try:
+			teatext = str(message.text.split()[1])
+			tea = f"\n─▄▀─▄▀\n──▀──▀\n█▀▀▀▀▀█▄\n█░░░░░█─█\n▀▄▄▄▄▄▀▀\n\n{teatext}\n"
+			time = 0.6
+			current = ''
+			for chunk in list(tea):
+				current += chunk
+				if not chunk.strip():
+					pass
+				else:
+					await message.edit(current)
+					await asyncio.sleep(0.01)
+			else:
+				sleep(5)
+				number = number + 1
+
+		except FloodWait as e:
+			try:
+				sleep(e.x)
+			finally:
+				e = None
+				del e
+
+	finally:
+		pass
+
+@app.on_message(filters.command('spamreaction', prefixes='.') & filters.me)
+async def spam(app, message):
+	global number
+	number = number + 1
+	try:
+		score = int(message.text.split()[1])
+		reaction = str(message.text.split()[2])
+		h = await app.get_history(chat_id=(message.chat.id), limit=score)
+		for x in h:
+			x = x.message_id
+			await app.send_reaction(message_id=x, chat_id=(message.chat.id), emoji=reaction)
+
+	except Exception as e:
+		try:
+			print(f" {Fore.YELLOW} Ошибка - {e}")
+			await message.edit('<b>Вы не ввели реакцию или количество повторов!\nПример:</b> <code>.spamreaction 10 🔥</code>')
+		finally:
+			e = None
+			del e
 
 @app.on_message(filters.command("like", prefixes=".") & filters.me)
 def betaloves(_, msg):
